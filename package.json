@@ -4,7 +4,6 @@
   "description": "Profit alerter",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Josh Buckland",
@@ -15,4 +14,3 @@
     "express": "^4.15.2"
   }
 }
-
