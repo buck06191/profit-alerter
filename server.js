@@ -84,7 +84,6 @@ var getTicker = function(url, data) {
       }
     });
 };
-};
 
 setInterval(() => {
     var url = API_DOMAIN;
