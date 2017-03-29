@@ -6,7 +6,7 @@
     <title>Profit-Alerter</title>
     <!-- CSS -->
     <!-- load bootstrap and our own personal stylesheet -->
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -20,29 +20,40 @@
     </div>
 
     <div class="container">
-        <button onclick="orderProfits(100)" style="color:black;">Start Machine</button>
-
-        <p id="server-time">
-        </p>
-        <p id="pair-data">
-        </p>
-        <div>
-            <h4>Ticker Data</h4>
-            <p id="ticker-data">
-            </p>
-        </div>
-        <div>
-            <h4>Order Info</h4>
-            <p id="XBTEUR">
-            </p>
-            <p id="ETHXBT">
-            </p>
-            <p id="ETHEUR">
-            </p>
-            <p id="profit">
-            </p>
+        <div class="row">
+            <div class="col-xs-6">
+                <p id="server-time">
+                </p>
+                <p id="pair-data">
+                </p>
+                <div>
+                    <h4>Ticker Data</h4>
+                    <p id="ticker-data">
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div>
+                    <h4>Order Info</h4>
+                    <form class="form-inline" onsubmit="orderProfits($('#initMoneyValue').val());return false;">
+                      <label class="mr-sm-2" for="initMoneyValue">Initial Money (EUR):</label>
+                      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="initMoneyValue" name = "initMoney" placeholder="e.g. 100">
+                      <button type="submit" class="btn btn-primary" id="theButton"> Capitalism Ahoy! </button>
+                    </form>
+                    <p id="XBTEUR">
+                    </p>
+                    <p id="ETHXBT">
+                    </p>
+                    <p id="ETHEUR">
+                    </p>
+                    <p id="profit">
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/notifier.js"></script>
     <script src="js/main.js"></script>
