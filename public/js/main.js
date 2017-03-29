@@ -1,24 +1,9 @@
 var socket = io();
-console.log(socket);
-// var server_time = document.getElementById('server-time');
-// var pair_data = document.getElementById('pair-data');
 var ticker_data = document.getElementById('ticker-data');
-
-/*socket.on('time', function(object) {
-    var timeString = JSON.parse(object);
-    server_time.innerHTML = 'Server time: ' + timeString.result.rfc1123;
-});*/
-
-/*socket.on('pair', function(object) {
-  var pairString = JSON.parse(object);
-  console.log(pairString);
-  pair_data.innerHTML = 'Pair Data: ' + JSON.stringify(pairString);
-});*/
 
 var priceCalculator = function(orderLimit, orderBook) {
     var currVol = 0;
     var remainingMoney = orderLimit;
-    console.log("Remaining: " + remainingMoney);
     for (var i = 0; i < orderBook.length; i++) {
         var newVol = remainingMoney / Number(orderBook[i][0]);
         if (newVol > orderBook[i][1]) {
@@ -44,7 +29,7 @@ socket.on('ticker', function(priceObject) {
 });
 
 
-var orderProfits = function(initMoney) {
+var orderProfits = function(initMoney, profitLimit) {
     var xbteur_el = document.getElementById('XBTEUR');
     var ethxbt_el = document.getElementById('ETHXBT');
     var etheur_el = document.getElementById('ETHEUR');
@@ -57,26 +42,23 @@ var orderProfits = function(initMoney) {
     };
 
     socket.on('XBTEUR', function(orderBook) {
-        console.log('XBTEUR');
+
         orderVolumes['XBTEUR'] = priceCalculator(initMoney, orderBook);
         xbteur_el.innerHTML = 'EUR -> XBT: ' + orderVolumes['XBTEUR'];
     });
 
     socket.on('ETHXBT', function(orderBook) {
-        console.log('ETHXBT');
         orderVolumes['ETHXBT'] = priceCalculator(orderVolumes['XBTEUR'], orderBook);
         ethxbt_el.innerHTML = 'XBT -> ETH: ' + orderVolumes['ETHXBT'];
     });
 
     socket.on('ETHEUR', function(orderBook) {
-        console.log('ETHEUR');
         orderVolumes['ETHEUR'] = 1 / (priceCalculator(1 / orderVolumes['ETHXBT'], orderBook));
-        console.log(JSON.stringify(orderVolumes));
         etheur_el.innerHTML = 'ETH -> EUR: ' + orderVolumes['ETHEUR'];
         var profit = (orderVolumes['ETHEUR'] - initMoney);
         profit_el.innerHTML = '<strong>PROFIT: </strong>' + profit;
 
-        if (profit > 20) {
+        if (profit > profitLimit) {
             notifyMe();
         }
     });

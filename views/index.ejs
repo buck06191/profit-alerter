@@ -35,9 +35,11 @@
             <div class="col-xs-6">
                 <div>
                     <h4>Order Info</h4>
-                    <form class="form-inline" onsubmit="orderProfits($('#initMoneyValue').val());return false;">
+                    <form class="form" onsubmit="orderProfits($('#initMoneyValue').val(), $('#profitLimit').val());return false;">
                       <label class="mr-sm-2" for="initMoneyValue">Initial Money (EUR):</label>
                       <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="initMoneyValue" name = "initMoney" placeholder="e.g. 100">
+                      <label class="mr-sm-2" for="profitLimit">Minimum Profit (EUR):</label>
+                      <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="profitLimit" name = "profitLimit" placeholder="e.g. 20">
                       <button type="submit" class="btn btn-primary" id="theButton"> Capitalism Ahoy! </button>
                     </form>
                     <p id="XBTEUR">
