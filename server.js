@@ -63,8 +63,7 @@ var getPairs = function(url, data) {
       if (err){
         console.error(err);
       } else{
-        console.log("Response: " + response);
-        console.log("Body: " + body);
+        io.emit('pair', body);
       }
     });
 };
@@ -79,8 +78,7 @@ var getTicker = function(url, data) {
       if (err){
         console.error(err);
       } else{
-        console.log("Response: " + response);
-        console.log("Body: " + body);
+        io.emit('ticker', body);
       }
     });
 };
