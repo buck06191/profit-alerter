@@ -70,18 +70,17 @@ var orderProfits = function(initMoney) {
 
     socket.on('ETHEUR', function(orderBook) {
         console.log('ETHEUR');
-        orderVolumes['ETHEUR'] = 1/(priceCalculator(1/orderVolumes['ETHXBT'], orderBook));
+        orderVolumes['ETHEUR'] = 1 / (priceCalculator(1 / orderVolumes['ETHXBT'], orderBook));
         console.log(JSON.stringify(orderVolumes));
         etheur_el.innerHTML = 'ETH -> EUR: ' + orderVolumes['ETHEUR'];
         var profit = (orderVolumes['ETHEUR'] - initMoney);
         profit_el.innerHTML = '<strong>PROFIT: </strong>' + profit;
 
-        if (profit > 20){
-          notifyMe();
+        if (profit > 20) {
+            notifyMe();
         }
     });
 };
-
 
 //var initMoney = 100;
 // orderProfits(initMoney);
