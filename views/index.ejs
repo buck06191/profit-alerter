@@ -19,13 +19,32 @@
         </div>
     </div>
 
-    <p id="server-time">
-    </p>
-    <p id="pair-data">
-    </p>
-    <p id="ticker-data">
-    </p>
+    <div class="container">
+        <button onclick="orderProfits(100)" style="color:black;">Start Machine</button>
+
+        <p id="server-time">
+        </p>
+        <p id="pair-data">
+        </p>
+        <div>
+            <h4>Ticker Data</h4>
+            <p id="ticker-data">
+            </p>
+        </div>
+        <div>
+            <h4>Order Info</h4>
+            <p id="XBTEUR">
+            </p>
+            <p id="ETHXBT">
+            </p>
+            <p id="ETHEUR">
+            </p>
+            <p id="profit">
+            </p>
+        </div>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="js/notifier.js"></script>
     <script src="js/main.js"></script>
 </body>
 
